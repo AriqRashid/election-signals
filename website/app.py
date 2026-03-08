@@ -3,7 +3,7 @@ import dash_ag_grid as dag
 import pandas as pd
 import plotly.express as px
 import statsmodels.api as sm
-from figures import approval_graph
+from figures import approval_graph, dissaproval_graph
 
 
 df = pd.read_csv('../Data/approvals_test_data.csv', 
@@ -18,26 +18,14 @@ app = Dash()
 
 
 approval_fig = approval_graph
+dissaproval_fig = dissaproval_graph
 
-dissaproval_fig = px.scatter(
-        df, 
-        x="end_date", 
-        y="no", 
-        labels={"end_date" : "Date", "no" : "Dissaproval Rating %"},
-        color_discrete_sequence=['red'],
-        trendline="lowess",
-        trendline_options=dict(frac=0.2)
-    )
-
-dissaproval_fig.update_layout(width=1000, height=600)
-dissaproval_fig.update_traces(marker=dict(opacity=0.5))
-dissaproval_fig.add_hline(y=50, line=dict(color="black", dash="dash", width=2))
 
 app.layout = [
     html.Div(children=['Approval Ratings']),
     html.Hr(),
     dcc.RadioItems(options=['Approval', 'Disapproval'], value='Approval', id='controls-and-radio-item'),
-    dcc.Graph(figure = {}, id='controls-and-graph'),
+    dcc.Graph(figure=approval_fig, id='controls-and-graph', style={'width': '1000px', 'height': '600px'}),
         dag.AgGrid(
         rowData=df.to_dict('records'),
         columnDefs=[{"field": i} for i in df.columns]
