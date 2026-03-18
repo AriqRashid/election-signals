@@ -27,7 +27,7 @@ white_chart = white_approval_chart(df)
 
 
 app.layout = [
-    html.Div(children=['Approval Ratings']),
+    html.Div(children=['Approval Ratings from Linux']),
     html.Hr(),
     dcc.Graph(figure=black_chart, style={'width': '1000px', 'height': '600px'}),
     dcc.Graph(figure=white_chart, style={'width': '1000px', 'height': '600px'})
