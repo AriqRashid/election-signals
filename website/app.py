@@ -18,21 +18,28 @@ df = pd.read_csv('../Data/approvals_test_data.csv',
 app = Dash()
 
 
-approval_fig = approval_graph
-dissaproval_fig = dissaproval_graph
-
-black_chart = black_approval_chart(df)
-white_chart = white_approval_chart(df)
+dark_chart = black_approval_chart(df)
+light_chart = white_approval_chart(df)
 
 
 
 app.layout = [
-    html.Div(children=['Approval Ratings from Linux']),
+    html.Div(children=['President Approval Ratings']),
     html.Hr(),
-    dcc.Graph(figure=black_chart, style={'width': '1000px', 'height': '600px'}),
-    dcc.Graph(figure=white_chart, style={'width': '1000px', 'height': '600px'})
+    html.Button('Switch Theme', id='toggle-btn', n_clicks=0),
+    dcc.Graph(id='approval-chart', style={'width': '1000px', 'height': '600px'}),
+
 ]
 
+@callback(
+    Output('approval-chart', 'figure'),
+    Input('toggle-btn', 'n_clicks')
+)
+def toggle_theme(n_clicks):
+    if n_clicks % 2 == 0:
+        return light_chart
+    else:
+        return dark_chart
 
 
 
