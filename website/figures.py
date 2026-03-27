@@ -7,7 +7,7 @@ import numpy as np
 
 
 #------ Approvals Dataframe ---------------------------
-approvals = pd.read_csv('../Data/approvals_test_data.csv', 
+approvals = pd.read_csv('Data/approvals_test_data.csv', 
     parse_dates=['end_date'],
     dtype={
         'yes': float,
