@@ -215,7 +215,10 @@ def white_approval_chart(result):
 
     # --- Combine into one figure ---
     fig = go.Figure()
-
+    fig.update_layout(
+    paper_bgcolor='white',
+    plot_bgcolor='white',
+    )
     # Approval band
     fig.add_trace(go.Scatter(x=yes_trace.x, y=lower_yes, mode='lines', line=dict(width=0), showlegend=False, hoverinfo='skip'))
     fig.add_trace(go.Scatter(x=yes_trace.x, y=upper_yes, mode='lines', line=dict(width=0), fill='tonexty', fillcolor='rgba(0,128,128,0.08)', showlegend=False, hoverinfo='skip'))
@@ -247,5 +250,7 @@ def white_approval_chart(result):
 
     fig.update_xaxes(range=[result['end_date'].min(), last_date + pd.Timedelta(days=30)])
     fig.add_hline(y=50, line=dict(color="black", dash="dash", width=1))
+
+
     
     return fig

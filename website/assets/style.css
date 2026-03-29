@@ -1,0 +1,79 @@
+/* --- Page --- */
+body {
+    margin: 0;
+    background-color: #f9f9f9;
+    font-family: 'Georgia', serif;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 15px;
+    font-family: 'Arial', sans-serif;
+}
+
+.nav-links a:hover {
+    color: #c0392b;
+}
+
+/* --- Main content --- */
+.page-content {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.toggle-btn {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.toggle-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* --- Chart card --- */
+.chart-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.chart-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 4px;
+}
+
+.chart-subtitle {
+    font-size: 13px;
+    color: #777777;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 16px;
+}
