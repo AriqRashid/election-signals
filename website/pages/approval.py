@@ -25,7 +25,7 @@ layout = html.Div(className='page-content', children=[
                 value=['approve', 'disapprove'],
                 inline=True
             ),
-            html.Button('Switch Theme', id='toggle-btn', n_clicks=0, className='toggle-btn'),
+            html.Button('☀️ Switch Theme', id='toggle-btn', n_clicks=0, className='toggle-btn'),
         ]),
         dcc.Graph(id='approval-chart', style={'height': '700px'}),
     ])
@@ -33,9 +33,13 @@ layout = html.Div(className='page-content', children=[
 
 @callback(
     Output('approval-chart', 'figure'),
+    Output('toggle-btn', 'children'),  
     Input('toggle-btn', 'n_clicks'),
     Input('line-toggle', 'value')
 )
-def update_chart(n_clicks, selected_lines):
+def update_chart(n_clicks, selected_lines): 
     theme = 'dark' if n_clicks % 2 != 0 else 'light'
-    return approval_chart(df, theme=theme, lines=selected_lines)
+    
+    btn_label = '☀️ Light' if theme == 'dark' else '🌙 Dark'  
+    
+    return approval_chart(df, theme=theme, lines=selected_lines), btn_label  
